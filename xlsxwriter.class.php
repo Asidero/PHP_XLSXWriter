@@ -297,7 +297,7 @@ class XLSXWriter
 		foreach ($row as $v) {
 			$number_format = isset($style[$c]) && isset($style[$c]["number_format"]) ? $style[$c]["number_format"] : $sheet->columns[$c]['number_format'];
 			$number_format_type = isset($style[$c]) && isset($style[$c]["number_format"]) ? self::determineNumberFormatType($style[$c]["number_format"]) : $sheet->columns[$c]['number_format_type'];
-			$cell_style_idx = !isset($style[$c]) ? $sheet->columns[$c]['default_cell_style'] : $this->addCellStyle($number_format, json_encode(isset($style[0]) ? $style[$c] : $style));
+			$cell_style_idx = !isset($style) ? $sheet->columns[$c]['default_cell_style'] : $this->addCellStyle($number_format, json_encode(isset($style[0]) ? $style[$c] : $style));
 			$this->writeCell($sheet->file_writer, $sheet->row_count, $c, $v, $number_format_type, $cell_style_idx);
 			$c++;
 		}
