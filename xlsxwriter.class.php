@@ -3,7 +3,6 @@
  * @license MIT License
  * */
 
-use Log;
 
 class XLSXWriter
 {
@@ -509,8 +508,6 @@ class XLSXWriter
 		$file->write('<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">');
 		$file->write('<numFmts count="' . count($this->number_formats) . '">');
 		foreach ($this->number_formats as $i => $v) {
-			Log::info($v);
-			Log::info(self::xmlspecialchars($v));
 			$file->write('<numFmt numFmtId="' . (164 + $i) . '" formatCode="' . self::xmlspecialchars($v) . '" />');
 		}
 		//$file->write(		'<numFmt formatCode="GENERAL" numFmtId="164"/>');
